@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aria - Business Template</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal: #14b8a6;
+    --dark: #1f2937;
+    --darker: #0f2a3d;
+    --gray: #6b7280;
+    --light-bg: #f3f4f6;
+  }
+
+  * { margin:0; padding:0; box-sizing: border-box; }
+
+  body{
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  a { text-decoration:none; color: inherit; }
+  ul { list-style: none; }
+  img { max-width:100%; display:block; }
+
+  /* ---------- NAVBAR ---------- */
+  header{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 20px 60px;
+    background: transparent;
+    position: absolute;
+    top:0; left:0; right:0;
+    z-index: 10;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:1.5rem;
+    font-weight:800;
+    color:#fff;
+  }
+  .logo i{ color: var(--teal); }
+
+  nav ul{
+    display:flex;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+  nav ul li a{
+    color:#fff;
+    font-weight:500;
+    letter-spacing: 1px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover{ color: var(--teal); }
+
+  .socials{ display:flex; gap:12px; }
+  .socials a{
+    width:36px; height:36px;
+    border-radius:50%;
+    background: var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .socials a:hover{
+    transform: translateY(-4px);
+    background:#0d9488;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    height: 100vh;
+    min-height: 600px;
+    background: linear-gradient(rgba(10,30,40,0.55), rgba(10,30,40,0.55)),
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=80') no-repeat center center;
+    background-size: cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position: relative;
+  }
+  .hero-content{
+    max-width: 700px;
+    padding: 0 30px;
+    color:#fff;
+  }
+  .hero-content h1{
+    font-size: 3.2rem;
+    font-weight:800;
+    line-height:1.15;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .hero-content p{
+    font-size:1.05rem;
+    color: #e5e7eb;
+    margin-bottom: 30px;
+  }
+  .btn{
+    display:inline-block;
+    background: var(--teal);
+    color:#fff;
+    padding: 14px 34px;
+    border:none;
+    border-radius: 4px;
+    font-weight:600;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .btn:hover{
+    background:#0d9488;
+    transform: translateY(-3px);
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    padding: 100px 60px;
+    display:flex;
+    gap: 60px;
+    align-items:flex-start;
+    flex-wrap: wrap;
+  }
+  .intro-left{ flex:1; min-width:280px; }
+  span.tag{
+    color: var(--teal);
+    font-weight:700;
+    letter-spacing:2px;
+    font-size:0.85rem;
+  }
+  .intro-left h2{
+    font-size: 2.3rem;
+    font-weight:800;
+    margin: 15px 0 25px;
+    color: var(--darker);
+  }
+
+  .intro-right{ flex:1.4; min-width:300px; }
+  .intro-right > p{ color: var(--gray); margin-bottom: 25px; }
+  .intro-img{
+    width:100%;
+    max-width: 480px;
+    border-radius: 6px;
+    margin-bottom: 40px;
+  }
+  .quote-box{
+    background: var(--light-bg);
+    border-left: 4px solid var(--teal);
+    padding: 25px 30px;
+    font-style: italic;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  .quote-box:hover{ transform: translateX(8px); }
+  .quote-box strong{
+    display:block;
+    margin-top:15px;
+    font-style: normal;
+    color: var(--darker);
+  }
+
+  .steps{
+    display:flex;
+    gap: 30px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+  }
+  .step{ flex:1; min-width:220px; }
+  .step .icon-box{
+    width:70px; height:70px;
+    background: var(--light-bg);
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom: 20px;
+    color: var(--teal);
+    font-size: 1.6rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .step:hover .icon-box{
+    background: var(--teal);
+    color:#fff;
+    transform: rotate(8deg);
+  }
+  .step h3{ margin-bottom:10px; font-size:1.15rem; }
+  .step p{ color: var(--gray); font-size:0.95rem; }
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    background: var(--light-bg);
+    padding: 100px 60px;
+    text-align:center;
+  }
+  .services h2{
+    font-size: 2.3rem;
+    font-weight:800;
+    max-width: 650px;
+    margin: 15px auto 60px;
+    color: var(--darker);
+  }
+
+  .pricing-cards{
+    display:flex;
+    justify-content:center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .card{
+    background:#fff;
+    width: 320px;
+    border-radius: 6px;
+    overflow:hidden;
+    text-align:left;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .card:hover{
+    transform: translateY(-12px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  }
+  .card img{ height: 180px; object-fit: cover; width:100%; }
+  .card-body{ padding: 28px; }
+  .card-body h3{ font-size:1.3rem; margin-bottom:12px; }
+  .card-body p{ color: var(--gray); font-size:0.9rem; margin-bottom: 20px; }
+  .card-body ul{ margin-bottom: 22px; }
+  .card-body ul li{
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 10px;
+    color: var(--dark);
+    font-size:0.92rem;
+  }
+  .card-body ul li::before{
+    content:"";
+    width:8px; height:8px;
+    background: var(--teal);
+    position:absolute;
+    left:0; top:6px;
+  }
+  .price{ font-weight:700; margin-bottom:18px; }
+  .price span{ color: var(--teal); }
+
+  /* ---------- CTA / GROWTH SECTION ---------- */
+  .growth{
+    display:flex;
+    gap: 60px;
+    padding: 100px 60px;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .growth-img{
+    flex:1;
+    min-width:250px;
+    height: 420px;
+    background: linear-gradient(rgba(15,42,61,0.4), rgba(15,42,61,0.4)),
+                url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    border-radius: 6px;
+  }
+  .growth-content{ flex:1.3; min-width:300px; }
+  .growth-content h2{
+    font-size:2.2rem;
+    font-weight:800;
+    margin-bottom: 35px;
+    color: var(--darker);
+  }
+  .growth-step{
+    display:flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .growth-step .num{
+    width:44px; height:44px;
+    border-radius:50%;
+    border:2px solid var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700;
+    flex-shrink:0;
+    color: var(--teal);
+  }
+  .growth-step h4{ margin-bottom:8px; }
+  .growth-step p{ color: var(--gray); font-size:0.92rem; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{
+    padding: 100px 60px;
+    text-align:center;
+  }
+  .testimonials h2{
+    font-size:2.2rem; font-weight:800; margin:15px 0 20px; color: var(--darker);
+  }
+  .testimonials > p{
+    max-width: 550px;
+    margin: 0 auto 60px;
+    color: var(--gray);
+  }
+  .testi-cards{
+    display:flex;
+    justify-content:center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .testi-card{ max-width: 280px; }
+  .testi-card img{
+    width:90px; height:90px;
+    border-radius:50%;
+    object-fit:cover;
+    margin: 0 auto 20px;
+    border: 3px solid var(--teal);
+    transition: transform 0.3s ease;
+  }
+  .testi-card:hover img{ transform: scale(1.08); }
+  .testi-card p{ color: var(--gray); font-size:0.92rem; margin-bottom:15px; }
+  .testi-card strong{ color: var(--darker); }
+
+  /* ---------- CALL ME (dark contact form) ---------- */
+  .callme{
+    background: var(--darker);
+    color:#fff;
+    padding: 100px 60px;
+  }
+  .callme-wrap{
+    display:flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  .callme-left{ flex:1; min-width:280px; }
+  .callme-left h2{ font-size: 2rem; font-weight:800; margin: 15px 0 20px; }
+  .callme-left p{ color: #cbd5e1; margin-bottom:15px; font-size:0.95rem; }
+  .callme-left ul{ margin-top: 30px; }
+  .callme-left ul li{
+    position:relative;
+    padding-left: 22px;
+    margin-bottom: 16px;
+    color:#cbd5e1;
+    font-size:0.9rem;
+  }
+  .callme-left ul li::before{
+    content:"";
+    width:8px; height:8px;
+    background: var(--teal);
+    position:absolute;
+    left:0; top:6px;
+  }
+
+  .callme-right{ flex:1; min-width:280px; }
+  .callme-right input, .callme-right select{
+    width:100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border:none;
+    border-radius:4px;
+    background: #1e3a4c;
+    color:#fff;
+    font-family:inherit;
+  }
+  .callme-right input::placeholder{ color:#94a3b8; }
+  .checkbox-row{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:20px;
+    font-size:0.85rem;
+    color:#cbd5e1;
+  }
+  .checkbox-row a{ color: var(--teal); text-decoration: underline; }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{
+    padding: 100px 60px;
+    text-align:center;
+    background: var(--light-bg);
+  }
+  .projects h2{
+    font-size:2.2rem; font-weight:800; margin: 15px 0 40px; color: var(--darker);
+  }
+  .filters{
+    display:flex;
+    justify-content:center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .filter-btn{
+    padding: 10px 22px;
+    border: none;
+    border-radius: 30px;
+    background: #e5e7eb;
+    color: var(--dark);
+    font-weight:600;
+    font-size:0.85rem;
+    cursor:pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .filter-btn.active, .filter-btn:hover{
+    background: var(--teal);
+    color:#fff;
+  }
+  .project-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .project-item{
+    position:relative;
+    overflow:hidden;
+    aspect-ratio: 1 / 1;
+  }
+  .project-item img{
+    width:100%; height:100%;
+    object-fit:cover;
+    transition: transform 0.4s ease;
+  }
+  .project-item:hover img{ transform: scale(1.1); }
+  .project-item .overlay{
+    position:absolute;
+    inset:0;
+    background: rgba(15,42,61,0.55);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    opacity:0;
+    transition: opacity 0.3s ease;
+  }
+  .project-item:hover .overlay{ opacity:1; }
+
+  @media (max-width: 768px){
+    .project-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    display:flex;
+    gap: 60px;
+    padding: 100px 60px;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .about-img{
+    flex:1;
+    min-width:280px;
+    border-radius: 6px;
+    overflow:hidden;
+  }
+  .about-content{ flex:1.2; min-width:300px; }
+  .about-content h2{
+    font-size:2.1rem; font-weight:800; margin: 15px 0 20px; color: var(--darker);
+  }
+  .about-content > p{ color: var(--gray); margin-bottom: 25px; }
+  .about-content ul li{
+    position:relative;
+    padding-left: 22px;
+    margin-bottom: 14px;
+    color: var(--dark);
+    font-size:0.95rem;
+  }
+  .about-content ul li::before{
+    content:"";
+    width:8px; height:8px;
+    background: var(--teal);
+    position:absolute;
+    left:0; top:6px;
+  }
+
+  /* ---------- CONTACT (get in touch) ---------- */
+  .contact{
+    padding: 100px 60px;
+    background: var(--light-bg);
+  }
+  .contact-wrap{
+    display:flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  .contact-left{ flex:1; min-width:280px; }
+  .contact-left h2{ font-size: 2rem; font-weight:800; margin: 15px 0 20px; color: var(--darker); }
+  .contact-left p{ color: var(--gray); margin-bottom:25px; font-size:0.95rem; }
+  .info-row{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    margin-bottom: 14px;
+    color: var(--dark);
+    font-size:0.92rem;
+  }
+  .info-row i{ color: var(--teal); }
+  .social-hex{
+    display:flex;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .social-hex a{
+    width:44px; height:44px;
+    border-radius: 8px;
+    background: var(--teal);
+    color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .social-hex a:hover{
+    background:#0d9488;
+    transform: translateY(-4px);
+  }
+
+  .contact-right{ flex:1; min-width:280px; }
+  .contact-right input, .contact-right textarea{
+    width:100%;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    border:1px solid #d1d5db;
+    border-radius:4px;
+    background: #fff;
+    color: var(--dark);
+    font-family:inherit;
+    resize: vertical;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--darker);
+    color:#fff;
+    padding: 70px 60px 30px;
+  }
+  .footer-grid{
+    display:flex;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  .footer-about{ flex:2; min-width:280px; }
+  .footer-about h3{ margin-bottom:15px; font-size:1.3rem; }
+  .footer-about p{ color:#94a3b8; font-size:0.9rem; }
+  .footer-col{ flex:1; min-width:150px; }
+  .footer-col h4{ margin-bottom:18px; font-size:1rem; }
+  .footer-col a{
+    display:block;
+    color:#94a3b8;
+    font-size:0.88rem;
+    margin-bottom:12px;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  .footer-col a:hover{ color: var(--teal); }
+  .footer-bottom{
+    text-align:center;
+    padding-top: 25px;
+    border-top: 1px solid #1e3a4c;
+    color:#94a3b8;
+    font-size:0.85rem;
+  }
+
+  @media (max-width: 768px){
+    header{ padding: 15px 20px; }
+    nav ul{ display:none; }
+    .hero-content h1{ font-size: 2.2rem; }
+    .intro, .services, .growth, .testimonials, .callme, .projects, .about, .contact{ padding: 60px 25px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="logo"><i class="fa-solid fa-hexagon-nodes"></i> Aria</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#intro">Intro</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#callme">Call Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="socials">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Business Template</h1>
+      <p>Aria is a top consultancy company specializing in business growth using online marketing and conversion optimization tactics.</p>
+      <button class="btn">Discover</button>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="intro" id="intro">
+    <div class="intro-left">
+      <span class="tag">INTRO</span>
+      <h2>We Offer Some Of The Best Business Growth Services In Town</h2>
+    </div>
+    <div class="intro-right">
+      <p>Launching a new company or developing the market position of an existing one can be quite an overwhelming process at times.</p>
+      <img class="intro-img" src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=700&q=80" alt="intro visual">
+      <div class="quote-box">
+        "Our mission here at Aria is to get you through those tough moments relying on our team's expertise in starting and growing companies."
+        <strong>Louise Donovan – CEO</strong>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="icon-box"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h3>Environment Analysis</h3>
+          <p>The starting point of any success story is knowing your current position in the business environment.</p>
+        </div>
+        <div class="step">
+          <div class="icon-box"><i class="fa-solid fa-drafting-compass"></i></div>
+          <h3>Development Planning</h3>
+          <p>After completing the environmental analysis, the next stage is to design and plan your development strategy.</p>
+        </div>
+        <div class="step">
+          <div class="icon-box"><i class="fa-solid fa-rocket"></i></div>
+          <h3>Execution &amp; Evaluation</h3>
+          <p>In this phase you will focus on executing the action plan and evaluating results after each marketing campaign.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services" id="services">
+    <span class="tag">SERVICES</span>
+    <h2>Choose The Service Package That Suits Your Needs</h2>
+
+    <div class="pricing-cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&q=80" alt="package 1">
+        <div class="card-body">
+          <h3>Off The Ground</h3>
+          <p>Use this service pack to give your company the necessary impulse to become an industry leader.</p>
+          <ul>
+            <li>Environment and competition</li>
+            <li>Designing the marketing plan</li>
+          </ul>
+          <div class="price">Starting at <span>$299</span></div>
+          <button class="btn">Details</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80" alt="package 2">
+        <div class="card-body">
+          <h3>Growing Fast</h3>
+          <p>Perfect for fresh ideas or young startups, this package will help get the business off the ground.</p>
+          <ul>
+            <li>Environment and competition</li>
+            <li>Designing the marketing plan</li>
+          </ul>
+          <div class="price">Starting at <span>$299</span></div>
+          <button class="btn">Details</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="package 3">
+        <div class="card-body">
+          <h3>Market Leader</h3>
+          <p>Perfect for fresh ideas or young startups, this package will help get the business off the ground.</p>
+          <ul>
+            <li>Environment and competition</li>
+            <li>Designing the marketing plan</li>
+          </ul>
+          <div class="price">Starting at <span>$299</span></div>
+          <button class="btn">Details</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GROWTH / CTA ===== -->
+  <section class="growth">
+    <div class="growth-img"></div>
+    <div class="growth-content">
+      <h2>Accelerate Business Growth To Improve Revenue Numbers</h2>
+
+      <div class="growth-step">
+        <div class="num">1</div>
+        <div>
+          <h4>How Can Aria Help Your Business</h4>
+          <p>At Aria solutions, we've taken the consultancy concept one step further by offering a full service management organization with expertise.</p>
+        </div>
+      </div>
+
+      <div class="growth-step">
+        <div class="num">2</div>
+        <div>
+          <h4>Great Strategic Business Planning</h4>
+        </div>
+      </div>
+
+      <div class="growth-step">
+        <div class="num">3</div>
+        <div>
+          <h4>Online Marketing Campaigns</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials">
+    <span class="tag">TESTIMONIALS</span>
+    <h2>Read Our Customer Testimonials</h2>
+    <p>Our clients are our partners and we cannot imagine a better future for our company without helping them reach their objectives.</p>
+
+    <div class="testi-cards">
+      <div class="testi-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="client 1">
+        <p>The guys from Aria helped with getting my business off the ground and turning into a profitable company.</p>
+        <strong>Jude Thorn – Founder</strong>
+      </div>
+      <div class="testi-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="client 2">
+        <p>The guys from Aria helped with getting my business off the ground and turning into a profitable company.</p>
+        <strong>Jude Thorn – Founder</strong>
+      </div>
+      <div class="testi-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="client 3">
+        <p>The guys from Aria helped with getting my business off the ground and turning into a profitable company.</p>
+        <strong>Jude Thorn – Founder</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CALL ME ===== -->
+  <section class="callme" id="callme">
+    <div class="callme-wrap">
+      <div class="callme-left">
+        <span class="tag">CALL ME</span>
+        <h2>Have Us Contact You By Filling And Submitting The Form</h2>
+        <p>You are just a few steps away from a personalized offer. Just fill in the form and send it to us and we'll get right back with a call to help you decide what service package works.</p>
+        <ul>
+          <li>It's very easy just fill in the form so we can call</li>
+          <li>During the call we'll require some info about the company</li>
+          <li>Don't hesitate to email us for any questions or inquiries</li>
+        </ul>
+      </div>
+      <div class="callme-right">
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Phone">
+        <input type="email" placeholder="Email">
+        <select>
+          <option>Interested In</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>WhatsApp</option>
+        </select>
+        <div class="checkbox-row">
+          <input type="checkbox" style="width:auto;">
+          <span>I agree with Aria's stated <a href="#">Privacy Policy</a> and <a href="#">Terms &amp; Conditions</a></span>
+        </div>
+        <button class="btn">Call Me</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects" id="projects">
+    <span class="tag">PROJECTS</span>
+    <h2>Projects That We're Proud Of</h2>
+
+    <div class="filters">
+      <button class="filter-btn active">Show All</button>
+      <button class="filter-btn">Design</button>
+      <button class="filter-btn">Development</button>
+      <button class="filter-btn">Marketing</button>
+      <button class="filter-btn">SEO</button>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=400&q=80" alt="project 1"><div class="overlay">Boat Trip</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80" alt="project 2"><div class="overlay">Coastline</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80" alt="project 3"><div class="overlay">Mountain Road</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=400&q=80" alt="project 4"><div class="overlay">Photography</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80" alt="project 5"><div class="overlay">Quiet Bench</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" alt="project 6"><div class="overlay">Spark Events</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80" alt="project 7"><div class="overlay">Trekking</div></div>
+      <div class="project-item"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80" alt="project 8"><div class="overlay">Adventure</div></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about" id="about">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=700&q=80" alt="about aria">
+    </div>
+    <div class="about-content">
+      <span class="tag">ABOUT</span>
+      <h2>We're Passionate About Delivering Growth Services</h2>
+      <p>Our goal is to provide the right business growth services at the appropriate time so companies can benefit from the created momentum and thrive for a long period of time.</p>
+      <ul>
+        <li>Everything we recommend has direct positive impact</li>
+        <li>You will become an important partner of our company</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT (Get In Touch) ===== -->
+  <section class="contact" id="contact">
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <span class="tag">CONTACT</span>
+        <h2>Get In Touch Using The Form</h2>
+        <p>You can stop by our office for a cup of coffee and just use the contact form below for any questions and inquiries.</p>
+
+        <div class="info-row"><i class="fa-solid fa-location-dot"></i> 22nd Innovative Street, San Francisco, CA 94043, US</div>
+        <div class="info-row"><i class="fa-solid fa-phone"></i> +91 123 456 7890</div>
+        <div class="info-row"><i class="fa-solid fa-envelope"></i> office@domain.com</div>
+
+        <h4 style="margin-top:30px; margin-bottom:15px;">Follow Aria On Social Media</h4>
+        <div class="social-hex">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-behance"></i></a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <div class="checkbox-row" style="color:var(--dark);">
+          <input type="checkbox" style="width:auto;">
+          <span>I agree with Aria's stated <a href="#">Privacy Policy</a> and <a href="#">Terms Conditions</a></span>
+        </div>
+        <button class="btn" style="width:100%;">Submit Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h3>Few Words About Aria</h3>
+        <p>We're passionate about delivering the best business growth services for companies just starting out as startups or industry players that have established their market position a long time ago.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Links</h4>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Partners</h4>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">Copyright &copy; 2026 All Rights Reserved – By Insha</div>
+  </footer>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
