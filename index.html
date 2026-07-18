@@ -42,12 +42,12 @@
   .logo{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:10px;
     font-size:1.5rem;
     font-weight:800;
     color:#fff;
   }
-  .logo i{ color: var(--teal); }
+  .logo img{ height: 34px; width:auto; }
 
   nav ul{
     display:flex;
@@ -67,23 +67,19 @@
   .socials{ display:flex; gap:12px; }
   .socials a{
     width:36px; height:36px;
-    border-radius:50%;
-    background: var(--teal);
     display:flex; align-items:center; justify-content:center;
     color:#fff;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease;
   }
-  .socials a:hover{
-    transform: translateY(-4px);
-    background:#0d9488;
-  }
+  .socials a img{ width:22px; height:22px; }
+  .socials a:hover{ transform: translateY(-4px); }
 
   /* ---------- HERO ---------- */
   .hero{
     height: 100vh;
     min-height: 600px;
     background: linear-gradient(rgba(10,30,40,0.55), rgba(10,30,40,0.55)),
-                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=80') no-repeat center center;
+                url('images/header-background.jpg') no-repeat center center;
     background-size: cover;
     display:flex;
     align-items:center;
@@ -263,10 +259,13 @@
     flex:1;
     min-width:250px;
     height: 420px;
-    background: linear-gradient(rgba(15,42,61,0.4), rgba(15,42,61,0.4)),
-                url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
     border-radius: 6px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
   }
+  .growth-img img{ height:50%; width:100%; object-fit:cover; }
   .growth-content{ flex:1.3; min-width:300px; }
   .growth-content h2{
     font-size:2.2rem;
@@ -291,8 +290,42 @@
   .growth-step h4{ margin-bottom:8px; }
   .growth-step p{ color: var(--gray); font-size:0.92rem; }
 
+  /* ---------- TEAM ---------- */
+  .team{
+    padding: 100px 60px;
+    text-align:center;
+  }
+  .team h2{
+    font-size:2.2rem; font-weight:800; margin: 15px 0 20px; color: var(--darker);
+  }
+  .team > p{
+    max-width: 550px;
+    margin: 0 auto 60px;
+    color: var(--gray);
+  }
+  .team-grid{
+    display:flex;
+    justify-content:center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .team-member{ width: 220px; }
+  .hexagon-wrap{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    overflow:hidden;
+    transition: transform 0.35s ease;
+  }
+  .hexagon-wrap img{ width:100%; height:100%; object-fit:cover; }
+  .team-member:hover .hexagon-wrap{ transform: translateY(-8px); }
+  .team-member h4{ font-size:1.1rem; margin-bottom:4px; color: var(--darker); }
+  .team-member span{ color: var(--teal); font-size:0.85rem; font-weight:600; }
+
   /* ---------- TESTIMONIALS ---------- */
   .testimonials{
+    background: var(--light-bg);
     padding: 100px 60px;
     text-align:center;
   }
@@ -477,7 +510,6 @@
   /* ---------- CONTACT (get in touch) ---------- */
   .contact{
     padding: 100px 60px;
-    background: var(--light-bg);
   }
   .contact-wrap{
     display:flex;
@@ -565,7 +597,7 @@
     header{ padding: 15px 20px; }
     nav ul{ display:none; }
     .hero-content h1{ font-size: 2.2rem; }
-    .intro, .services, .growth, .testimonials, .callme, .projects, .about, .contact{ padding: 60px 25px; }
+    .intro, .services, .growth, .team, .testimonials, .callme, .projects, .about, .contact{ padding: 60px 25px; }
   }
 </style>
 </head>
@@ -573,12 +605,13 @@
 
   <!-- ===== HEADER ===== -->
   <header>
-    <div class="logo"><i class="fa-solid fa-hexagon-nodes"></i> Aria</div>
+    <div class="logo"><img src="images/logo.svg" alt="Aria logo"> Aria</div>
     <nav>
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#intro">Intro</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a href="#callme">Call Me</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#about">About</a></li>
@@ -586,8 +619,8 @@
       </ul>
     </nav>
     <div class="socials">
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><img src="images/svgexport-1.svg" alt="facebook"></a>
+      <a href="#"><img src="images/svgexport-2.svg" alt="twitter"></a>
     </div>
   </header>
 
@@ -608,7 +641,7 @@
     </div>
     <div class="intro-right">
       <p>Launching a new company or developing the market position of an existing one can be quite an overwhelming process at times.</p>
-      <img class="intro-img" src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=700&q=80" alt="intro visual">
+      <img class="intro-img" src="images/intro-office.jpg" alt="intro visual">
       <div class="quote-box">
         "Our mission here at Aria is to get you through those tough moments relying on our team's expertise in starting and growing companies."
         <strong>Louise Donovan – CEO</strong>
@@ -641,7 +674,7 @@
 
     <div class="pricing-cards">
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=500&q=80" alt="package 1">
+        <img src="images/services-1.jpg" alt="package 1">
         <div class="card-body">
           <h3>Off The Ground</h3>
           <p>Use this service pack to give your company the necessary impulse to become an industry leader.</p>
@@ -655,7 +688,7 @@
       </div>
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80" alt="package 2">
+        <img src="images/services-2.jpg" alt="package 2">
         <div class="card-body">
           <h3>Growing Fast</h3>
           <p>Perfect for fresh ideas or young startups, this package will help get the business off the ground.</p>
@@ -669,7 +702,7 @@
       </div>
 
       <div class="card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="package 3">
+        <img src="images/services-3.jpg" alt="package 3">
         <div class="card-body">
           <h3>Market Leader</h3>
           <p>Perfect for fresh ideas or young startups, this package will help get the business off the ground.</p>
@@ -686,7 +719,10 @@
 
   <!-- ===== GROWTH / CTA ===== -->
   <section class="growth">
-    <div class="growth-img"></div>
+    <div class="growth-img">
+      <img src="images/details-1-background.jpg" alt="growth top">
+      <img src="images/details-2-background.jpg" alt="growth bottom">
+    </div>
     <div class="growth-content">
       <h2>Accelerate Business Growth To Improve Revenue Numbers</h2>
 
@@ -714,6 +750,36 @@
     </div>
   </section>
 
+  <!-- ===== TEAM ===== -->
+  <section class="team" id="team">
+    <span class="tag">TEAM</span>
+    <h2>Meet The People Behind Aria</h2>
+    <p>Our team combines strategy, creativity, and technical expertise to help every client reach their business goals.</p>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="hexagon-wrap"><img src="images/team-1.png" alt="team member 1"></div>
+        <h4>Ryan Cooper</h4>
+        <span>Marketing Lead</span>
+      </div>
+      <div class="team-member">
+        <div class="hexagon-wrap"><img src="images/team-2.png" alt="team member 2"></div>
+        <h4>Emily Watson</h4>
+        <span>Business Strategist</span>
+      </div>
+      <div class="team-member">
+        <div class="hexagon-wrap"><img src="images/team-3.png" alt="team member 3"></div>
+        <h4>Daniel Brooks</h4>
+        <span>Creative Director</span>
+      </div>
+      <div class="team-member">
+        <div class="hexagon-wrap"><img src="images/team-4.png" alt="team member 4"></div>
+        <h4>Sarah Miles</h4>
+        <span>Client Relations</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== TESTIMONIALS ===== -->
   <section class="testimonials">
     <span class="tag">TESTIMONIALS</span>
@@ -722,17 +788,17 @@
 
     <div class="testi-cards">
       <div class="testi-card">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="client 1">
+        <img src="images/testimonial-1.jpg" alt="client 1">
         <p>The guys from Aria helped with getting my business off the ground and turning into a profitable company.</p>
         <strong>Jude Thorn – Founder</strong>
       </div>
       <div class="testi-card">
-        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="client 2">
+        <img src="images/testimonial-2.jpg" alt="client 2">
         <p>The guys from Aria helped with getting my business off the ground and turning into a profitable company.</p>
         <strong>Jude Thorn – Founder</strong>
       </div>
       <div class="testi-card">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="client 3">
+        <img src="images/testimonial-3.jpg" alt="client 3">
         <p>The guys from Aria helped with getting my business off the ground and turning into a profitable company.</p>
         <strong>Jude Thorn – Founder</strong>
       </div>
@@ -785,21 +851,21 @@
     </div>
 
     <div class="project-grid">
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=400&q=80" alt="project 1"><div class="overlay">Boat Trip</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80" alt="project 2"><div class="overlay">Coastline</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80" alt="project 3"><div class="overlay">Mountain Road</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=400&q=80" alt="project 4"><div class="overlay">Photography</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=400&q=80" alt="project 5"><div class="overlay">Quiet Bench</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" alt="project 6"><div class="overlay">Spark Events</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80" alt="project 7"><div class="overlay">Trekking</div></div>
-      <div class="project-item"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=400&q=80" alt="project 8"><div class="overlay">Adventure</div></div>
+      <div class="project-item"><img src="images/project-1.jpg" alt="project 1"><div class="overlay">Boat Trip</div></div>
+      <div class="project-item"><img src="images/project-2.jpg" alt="project 2"><div class="overlay">Coastline</div></div>
+      <div class="project-item"><img src="images/project-3.jpg" alt="project 3"><div class="overlay">Mountain Road</div></div>
+      <div class="project-item"><img src="images/project-4.jpg" alt="project 4"><div class="overlay">Photography</div></div>
+      <div class="project-item"><img src="images/project-5.jpg" alt="project 5"><div class="overlay">Quiet Bench</div></div>
+      <div class="project-item"><img src="images/project-6.jpg" alt="project 6"><div class="overlay">Spark Events</div></div>
+      <div class="project-item"><img src="images/project-7.jpg" alt="project 7"><div class="overlay">Trekking</div></div>
+      <div class="project-item"><img src="images/project-8.jpg" alt="project 8"><div class="overlay">Adventure</div></div>
     </div>
   </section>
 
   <!-- ===== ABOUT ===== -->
   <section class="about" id="about">
     <div class="about-img">
-      <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=700&q=80" alt="about aria">
+      <img src="images/about.jpg" alt="about aria">
     </div>
     <div class="about-content">
       <span class="tag">ABOUT</span>
